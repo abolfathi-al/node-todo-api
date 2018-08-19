@@ -26,5 +26,20 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
   }, (err) => {
     console.log('Unable to fetch todos',err);
   });
+
+  db.collection('Todes').findOneAndUpdate({
+    _id: new ObjectId("5b79415532bb0223f613c8a4")
+  }, {
+    $set: {
+      text: 'philip morris',
+      currency: 'USD'
+    }
+  }, {
+    returnOriginal: false
+  }
+  ).then((result) => {
+    console.log(JSON.stringify(result, undefined, 2));
+  })
+
   //client.close();
 });
